@@ -25,12 +25,11 @@ all_data = soup.find_all("td", class_="infobox-data")
 labels = [label.text.strip() for label in all_labels]
 labeldata = [data.text.strip() for data in all_data]
 
-# Print extracted labels and data
-
 # Combine labels and data into a dictionary
 dataset = dict(zip(labels, labeldata))
 df = pd.DataFrame(list(dataset.items()), columns=["Label", "Data"])
 
+#store data in excel
 df.to_excel("wikiscrape_" + str(formatted_name) + ".xlsx", index=False)
 print("All label info stored in 'wikiscrape_" + str(formatted_name) + ".xlsx'")
 
